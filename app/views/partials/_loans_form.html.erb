@@ -1,0 +1,13 @@
+
+
+      <%= f.label :name, "Nombre" %>
+      <%= f.text_field :name %>
+
+      <%= f.label :loan, "Prestamo" %>
+      <%= f.text_field :loan %>
+
+      <%= f.label :loantype, "Tipo" %>
+      <%= f.select(:loantype, @loantypes, :prompt => 'Select') %>
+
+
+      <%= f.submit "Crear Prestamo", class: "btn btn-primary" %>
