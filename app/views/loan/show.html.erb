@@ -1,2 +1,32 @@
-<h1>Loan#show</h1>
-<p>Find me in app/views/loan/show.html.erb</p>
+<div class="jumbotron">
+	<h1><%= @loan.name %></h1>
+	<div class="container">
+		<ul class="list-group">
+			<li class="list-group-item">
+				Prestamo Inicial: <%= @loan.loan %>$
+			</li>
+			<li class="list-group-item">
+				Tipo: <%= @loan.loantype %>
+			</li>
+			<li class="list-group-item">
+				Fecha: <%= @loan.created_at %>
+			</li>
+			<li class="list-group-item">
+				Saldo: <%= @balance %>$
+			</li>
+		</ul>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Panel title</h3>
+			</div>
+			<div class="panel-body">
+				<% if @pay %>
+
+				<% else %>
+					AUN NO HA ABONADO AL PRESTAMO
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

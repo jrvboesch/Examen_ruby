@@ -13,7 +13,7 @@ class LoanController < ApplicationController
 
   #CREATE
   def create
-    @loan = Loan.new( params[ :loan_params ] )
+    @loan = Loan.new( loan_params )
     if @loan.save
       redirect_to @loan
     else
@@ -24,6 +24,8 @@ class LoanController < ApplicationController
   # Show
   def show
   	@loan = Loan.find(params[:id])
+    @balance = Loan.balance( @loan.id )
+    @pay = nil?
   end
 
   def edit
