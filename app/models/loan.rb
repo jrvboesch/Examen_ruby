@@ -1,7 +1,8 @@
 class Loan < ApplicationRecord
+	has_many:payment
 	
 	validates :name, presence: true
-	validates :loan, presence: true
+	validates :loan, presence: true, numericality: { greater_than: 5000 }
 
 	def self.getType
 		return ["AUTO","VIVIENDA","PERSONAL"]
@@ -16,6 +17,7 @@ class Loan < ApplicationRecord
 	end
 
 	def self.balance(id)
-		return Loan.find(id).loan
+		@loan = Loan.find(id)
+		return @loan.loan - @loan.payment.sum( :pay )
 	end
 end

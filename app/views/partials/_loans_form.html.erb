@@ -7,7 +7,5 @@
       <%= f.text_field :loan %>
 
       <%= f.label :loantype, "Tipo" %>
-      <%= f.select(:loantype, @loantypes, :require => true ) %>
+      <%= f.select :loantype, Loan.getType %>
 
-
-      <%= f.submit "Crear Prestamo", class: "btn btn-primary" %>

@@ -1,0 +1,16 @@
+<h1>Nuevo Prestamo</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+
+  <%= render partial: "partials/errors", locals: {obj: @loan} %>
+
+    <%= form_for @loan, url: {action: "create"} do | f | %>
+      <%= render "partials/loans_form", f: f %>    
+      <%= f.submit "Crear Prestamo", class: "btn btn-primary" %>
+    <% end %>
+
+  </div>
+</div>
+
+    

@@ -1,4 +1,4 @@
-class LoanController < ApplicationController
+class LoansController < ApplicationController
 
   # Index
   def index
@@ -8,7 +8,6 @@ class LoanController < ApplicationController
   # NEW
   def new
   	@loan = Loan.new
-    @loantypes = Loan.getType
   end
 
   #CREATE
@@ -25,12 +24,21 @@ class LoanController < ApplicationController
   def show
   	@loan = Loan.find(params[:id])
     @balance = Loan.balance( @loan.id )
-    @pay = nil?
   end
 
   def edit
+    @loan = Loan.find(params[:id])
   end
 
+  def update
+    @loan = Loan.find(params[:id])
+
+    if @loan.update_attributes(loan_params)
+      redirect_to @loan
+    else
+      render :edit
+    end
+  end
   def loan_params
     params.require( :loan ).permit( :name, :loan, :loantype )
   end
